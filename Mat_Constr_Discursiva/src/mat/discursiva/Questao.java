@@ -137,17 +137,17 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 			}
 		});
 		
-		for(int i=0;i<5;i++){
-			rd[i].setOnTouchListener(new OnTouchListener() {
+		//for(int i=0;i<5;i++){
+		//	rd[i].setOnTouchListener(new OnTouchListener() {
 				
-				@Override
-				public boolean onTouch(View v, MotionEvent event) {
+		//		@Override
+		//		public boolean onTouch(View v, MotionEvent event) {
 					// TODO Auto-generated method stub
-					gestureDetector.onTouchEvent(event);
-					return false;
-				}
-			});
-		}						
+		//			gestureDetector.onTouchEvent(event);
+		//			return false;
+		//		}
+		//	});
+		//}						
 		
 		// método para trabalhar com o Sortear
 		btnSortear.setOnClickListener(new View.OnClickListener() {

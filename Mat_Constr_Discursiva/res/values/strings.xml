@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">DAv2</string>
+    <string name="app_name">Teste Discursiva</string>
     <string name="q0">[Ato Administrativo] Qual das alternativas abaixo possuem todas as caracteristicas de um ato administrativo?</string>
 <string name="q0a"> não produz efeito jurídico, unilateral, direito público</string>
 <string name="q0b"> não produz efeito jurídico, bilateral, direito público</string>
