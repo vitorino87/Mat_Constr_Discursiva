@@ -52,7 +52,7 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 	TextView tv;
 	RadioButton[] rd = new RadioButton[5];
 	Button btnRandom, btnChecar, btnBuscar, btnAnterior, btnProximo, btnSortear, btnTema;
-	EditText txtBuscar;
+	EditText txtBuscar, txtResposta;
 	Spinner btnSpinner;
 
 	// variáveis para impedir que o random repita números
@@ -110,6 +110,7 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 		btnTema = (Button) findViewById(R.id.btnTema);
 		questoesTematicas = new ArrayList<Integer>();		
 		sv = (ScrollView) findViewById(R.id.scrollView);
+		txtResposta = (EditText) findViewById(R.id.editText2);
 		
 		if(z!=-1){
 			carregarQuestao(z);
@@ -165,12 +166,17 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 		});
 
 		// método para trabalhar com o botão Checar
-		btnChecar.setOnClickListener(new View.OnClickListener() {
-
+		rc = this.getResources();
+		btnChecar.setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				QuestaoAux.checked(z, b, rd, Questao.this, auxiliarEmbaralharAlternativas);
+				String linha = rc.getString(b[z][0]);
+				ArrayList<String> resp = new ArrayList<String>();
+				QuestaoAux qa = new QuestaoAux();
+				qa.processarLinha(linha, resp);
+				//QuestaoAux.processarLinha(linha, resp);
+				//QuestaoAux.checked(z, b, rd, Questao.this, auxiliarEmbaralharAlternativas);
 			}
 		});
 
