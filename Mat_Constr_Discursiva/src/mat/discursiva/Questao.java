@@ -172,9 +172,16 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String linha = rc.getString(b[z][0]);
+				linha = linha.replace("Resp.:", "");
+				linha = linha.toLowerCase();
+				linha = linha.trim();
 				ArrayList<String> resp = new ArrayList<String>();
 				QuestaoAux qa = new QuestaoAux();
 				qa.processarLinha(linha, resp);
+				String respUI = txtResposta.getText().toString();
+				respUI=respUI.toLowerCase();
+				boolean gab = qa.verificarQuestaoCorreta(respUI, resp, linha);
+				qa.apresentarQuestaoErrada(Questao.this, resp, gab);
 				//QuestaoAux.processarLinha(linha, resp);
 				//QuestaoAux.checked(z, b, rd, Questao.this, auxiliarEmbaralharAlternativas);
 			}
