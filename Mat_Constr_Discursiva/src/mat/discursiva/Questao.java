@@ -137,6 +137,16 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 			}
 		});
 		
+		txtResposta.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				gestureDetector.onTouchEvent(event);
+				return false;
+			}
+		});
+		
 		//for(int i=0;i<5;i++){
 		//	rd[i].setOnTouchListener(new OnTouchListener() {
 				
@@ -519,7 +529,17 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 	public boolean onDoubleTap(MotionEvent e) {
 		// TODO Auto-generated method stub
 		if(z!=-1){
-			QuestaoAux.checked(z, b, rd, Questao.this, auxiliarEmbaralharAlternativas);
+			String linha = rc.getString(b[z][0]);
+			linha = linha.replace("Resp.:", "");
+			linha = linha.toLowerCase();
+			linha = linha.trim();
+			ArrayList<String> resp = new ArrayList<String>();
+			QuestaoAux qa = new QuestaoAux();
+			qa.processarLinha(linha, resp);
+			String respUI = txtResposta.getText().toString();
+			respUI=respUI.toLowerCase();
+			boolean gab = qa.verificarQuestaoCorreta(respUI, resp, linha);
+			qa.apresentarQuestaoErrada(Questao.this, resp, gab);
 		}		
 		return true;
 	}
