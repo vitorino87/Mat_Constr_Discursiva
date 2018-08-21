@@ -260,8 +260,10 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub				
-				carregarQuestao(questoesTematicas.get(auxiliarTema++));
+				// TODO Auto-generated method stub
+				if(auxiliarTema < questoesTematicas.size()){
+					carregarQuestao(questoesTematicas.get(auxiliarTema++));
+				}				
 				mudarACorDosLayouts();
 			}
 		});
@@ -340,6 +342,8 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 	      if(item!="TODOS OS TEMAS"){
 	    	  carregarArrayComQuestoesDoTemaSelecionado(item);	
 	    	  carregarQuestao(questoesTematicas.get(auxiliarTema++));
+	      }else{
+	    	  carregarQuestao(0);
 	      }
 	      // Showing selected spinner item
 	      Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();	      
@@ -352,11 +356,13 @@ public class Questao extends QuestaoConector implements OnItemSelectedListener, 
 	   public void carregarArrayComQuestoesDoTemaSelecionado(String tema){
 		   int posicaoDoTema = temas.indexOf(tema);
 		   int i = conectorAuxiliar.size();
+		   questoesTematicas.clear();
 		   for(int j=0;j<i;j++){
 			   if(conectorAuxiliar.get(j) == posicaoDoTema){
 				   questoesTematicas.add(j);
 			   }
 		   }
+		   auxiliarTema=0;
 	   }
 	   
 ////////FIM DO MÉTODO PARA TRABALHAR COM O ITEM SELECIONADO PELO SPINNER///////////////////////////////////////	   	  
